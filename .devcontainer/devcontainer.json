@@ -1,0 +1,45 @@
+{
+  "name": "BookR Dev Container",
+
+  // Point to the Dockerfile to build the container
+  "build": {
+    "dockerfile": "Dockerfile",
+    // Context is the parent directory (project root)
+    "context": ".."
+  },
+
+  // Set the workspace folder inside the container
+  "workspaceFolder": "/workspace",
+
+  // Forward the port from the container to the local machine
+  "forwardPorts": [3000],
+
+  // Port attributes to provide a better user experience
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "openBrowser"
+    }
+  },
+
+  // Use a non-root user for better security
+  "remoteUser": "node",
+
+  // VS Code specific customizations
+  "customizations": {
+    "vscode": {
+      // Recommended extensions for this project
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode-remote.remote-containers",
+        "vscode.docker"
+      ],
+      // Optional settings for the workspace
+      "settings": {
+        // Use the lightweight Alpine shell
+        "terminal.integrated.defaultProfile.linux": "sh"
+      }
+    }
+  }
+}
